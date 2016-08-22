@@ -46,7 +46,7 @@ public class ReserveApartment {
             Integer expectedRooms,
             Integer expectedBeds
     ) throws Exception {
-        WebElement location = driver.findElement(By.xpath(".//input[@class=\"LocationInput input-large\"]"));
+        WebElement location = driver.findElement(By.xpath(".//input[@class='LocationInput input-large']"));
         location.clear();
         location.sendKeys(locationV);
         WebElement dateFrom = driver.findElement(By.id("startDate"));
@@ -55,10 +55,10 @@ public class ReserveApartment {
         WebElement dateTo = driver.findElement(By.id("endDate"));
         dateTo.clear();
         dateTo.sendKeys(dateToV);
-        Select guests = new Select(driver.findElement(By.xpath(".//div[@id=\"searchbar\"]//select[@name=\"guests\"]")));
+        Select guests = new Select(driver.findElement(By.xpath(".//div[@id='searchbar']//select[@name='guests']")));
         guests.selectByVisibleText(guestsV);
         driver.findElement(By.cssSelector(".btn.btn-primary.btn-large")).click();
-        WebElement roomType = driver.findElement(By.xpath(".//div[@id='room-options']//input[@value=\"Entire home/apt\"]"));
+        WebElement roomType = driver.findElement(By.xpath(".//div[@id='room-options']//input[@value='Entire home/apt']"));
         if (roomType.isSelected() != typeOfApartmentV)
             roomType.click();
         String apartment = ".//div[@id='search-results-panel']//img[contains(@alt, '" + apartmentName + "')]";
