@@ -58,10 +58,12 @@ public class ReserveApartment {
         Select guests = new Select(driver.findElement(By.xpath(".//div[@id='searchbar']//select[@name='guests']")));
         guests.selectByVisibleText(guestsV);
         driver.findElement(By.cssSelector(".btn.btn-primary.btn-large")).click();
-        WebElement roomType = driver.findElement(By.xpath(".//div[@id='room-options']//input[@value='Entire home/apt']"));
-        if (roomType.isSelected() != typeOfApartmentV)
+        WebElement roomType = driver.findElement(By.xpath("//div[@data-name='room_types']//input[@type='checkbox' and @value='Entire home/apt']"));
+        if (roomType.isSelected() != typeOfApartmentV) {
             roomType.click();
-        String apartment = ".//div[@id='search-results-panel']//img[contains(@alt, '" + apartmentName + "')]";
+        }
+        String apartment = ".//img[contains(@alt, '" + apartmentName + "')][1]";
+
         Wait fluenWait = new FluentWait(driver)
                 .withTimeout(30, TimeUnit.SECONDS)
                 .pollingEvery(2, TimeUnit.SECONDS)
